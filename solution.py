@@ -25,7 +25,8 @@ def read_file():
         targetVal_freq = defaultdict(lambda: 0)
         total_targetVal = 0
         featureName_targetVal_featureValList = {}
-
+        digit_featureNames = set()
+        non_digit_featureNames = set()
 
         for row in reader:
             for j, val in enumerate(row):
@@ -43,6 +44,9 @@ def read_file():
                         if row[target_featureName_index] not in featureName_targetVal_featureValList[index_featureName[j]]:
                             featureName_targetVal_featureValList[index_featureName[j]][row[target_featureName_index]] = []
                         featureName_targetVal_featureValList[index_featureName[j]][row[target_featureName_index]].append(val)
+                        digit_featureNames.add(index_featureName[j])
+                    else:
+                        non_digit_featureNames.add(index_featureName[j])
                 else:
                     # targetVale
                     targetVal_freq[val] += 1
@@ -83,6 +87,20 @@ def read_file():
                             sd = stdev(featureName_targetVal_featureValList[featureName][targetVal])
                             print('P(' + featureName + '|' + targetVal + ';alpha=' + str(alpha) + ') = N(mean='
                              + str(avg) + ', sd=' + str(sd) + ')')
+
+        print('Input')
+        # print(featureName_featureVal_targetVal)
+        for targetVal in targetVal_freq:
+            p_target = targetVal_freq[targetVal]/total_targetVal
+            print('P(' + targetVal + ';alpha=' + str(alpha) + ')=' + str(p_target))
+            for featureName in non_digit_featureNames:
+                for featureVal in featureName_featureVal_targetVal[featureName]:
+                    if targetVal not in featureName_featureVal_targetVal[featureName][featureVal]:
+                        print('needs smoothing')
+                    else:
+                        print('P(' + featureName + '=' + featureVal + '|' + targetVal + ';alpha=' + str(alpha) + ') = '
+                         + str(featureName_featureVal_targetVal[featureName][featureVal][targetVal]/targetVal_freq[targetVal]))
+
 
 def mean(data):
     data = list(map(int, data))
