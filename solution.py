@@ -64,18 +64,14 @@ def read_file():
         # print(targetVal_freq)
 
 
-        # for targetVal in targetVal_freq:
-        #     print('P(' + targetVal + ';alpha=' + str(alpha) + ')=' + str(targetVal_freq[targetVal]/total_targetVal))
+        for targetVal in targetVal_freq:
+            print('P(' + targetVal + ';alpha=' + str(alpha) + ')=' + str(targetVal_freq[targetVal]/total_targetVal))
 
         printed_already = set()
 
         for featureName in featureName_featureVal_targetVal:
             for featureVal in featureName_featureVal_targetVal[featureName]:
                 for targetVal in featureName_featureVal_targetVal[featureName][featureVal]:
-                    # print(featureVal)
-                    # print('P(' + featureName + '=' + featureVal + '|' + targetVal + ';alpha=' + str(alpha) + ')='
-                    #     + str(targetVal_freq[targetVal]/total_targetVal))
-
                     if not featureVal.isdigit():
                         print('P(' + featureName + '=' + featureVal + '|' + targetVal + ';alpha=' + str(alpha) + ') = '
                          + str(featureName_featureVal_targetVal[featureName][featureVal][targetVal]/targetVal_freq[targetVal]))
