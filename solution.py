@@ -13,14 +13,17 @@ digit_featureNames = set()
 non_digit_featureNames = set()
 targetValSet = set()
 featureName_featureVal_targetVal_smoothing_lst = []
+featureVal_underCondition_targetVal = {}
+inputs = []
+inputDict = {}
 
 def read_file():
     with open(sys.argv[1], 'rt') as f:
+        target_featureName = sys.argv[2]
         alpha = sys.argv[3]
+        inputs, inputDict = readInputArgv()
         reader = csv.reader(f)
         featureName_list = next(reader)
-        
-        target_featureName = sys.argv[2]
         
         target_featureName_index = processFeatureNameList(featureName_list, target_featureName)
 
@@ -32,8 +35,6 @@ def read_file():
         
         printed_already = set()
 
-        # print(featureName_featureVal_targetVal_smoothing_lst)
-
         # print probability except the ones that need smoothing
         for featureName in featureName_featureVal_targetVal:
             for featureVal in featureName_featureVal_targetVal[featureName]:
@@ -41,10 +42,14 @@ def read_file():
                     if not featureVal.isdigit():
                         if [featureName, featureVal, targetVal] not in featureName_featureVal_targetVal_smoothing_lst:
                             # no need to smooth
+                            v = featureName_featureVal_targetVal[featureName][featureVal][targetVal] / targetVal_freq[targetVal]
                             print('P(' + featureName + '=' + featureVal + '|' + targetVal + ';alpha=' + str(alpha) + ') = '
-                             + str(featureName_featureVal_targetVal[featureName][featureVal][targetVal] / 
-                                targetVal_freq[targetVal]))
-                            
+                             + str(v))
+                            if targetVal not in featureVal_underCondition_targetVal:
+                                featureVal_underCondition_targetVal[targetVal] = {}
+                                featureVal_underCondition_targetVal[targetVal][featureVal] = v
+                            else:
+                                featureVal_underCondition_targetVal[targetVal][featureVal] = v
                     else:
                         if featureName+targetVal not in printed_already:
                             printed_already.add(featureName+targetVal)
@@ -64,20 +69,23 @@ def read_file():
             v = nu / de
             print('P(' + featureName + '=' + featureVal + '|' + targetVal + ';alpha=' + str(alpha) + ') = '
              + str(v))
+            if targetVal not in featureVal_underCondition_targetVal:
+                featureVal_underCondition_targetVal[targetVal] = {}
+                featureVal_underCondition_targetVal[targetVal][featureVal] = v
+            else:
+                featureVal_underCondition_targetVal[targetVal][featureVal] = v
 
-        print('Input ...')
-        # print(featureName_featureVal_targetVal)
-        for targetVal in targetVal_freq:
-            p_target = targetVal_freq[targetVal]/total_targetVal
-            print('P(' + targetVal + ';alpha=' + str(alpha) + ')=' + str(p_target))
-            for featureName in non_digit_featureNames:
-                for featureVal in featureName_featureVal_targetVal[featureName]:
-                    if targetVal not in featureName_featureVal_targetVal[featureName][featureVal]:
-                        print('needs smoothing')
-                    else:
-                        print('P(' + featureName + '=' + featureVal + '|' + targetVal + ';alpha=' + str(alpha) + ') = '
-                         + str(featureName_featureVal_targetVal[featureName][featureVal][targetVal]/targetVal_freq[targetVal]))
+        for targetVal in targetValSet:
+            for j, inp in inputDict.items():
+                if inp.isdigit():
+                    avg = mean(featureName_targetVal_featureValList[featureName_list[j]][targetVal])
+                    sd = stdev(featureName_targetVal_featureValList[featureName_list[j]][targetVal])
+                    mle = mleEsimate(int(inp), avg, sd)
+                    featureVal_underCondition_targetVal[targetVal][inp] = mle
 
+        print('Input: ', inputs)
+
+        computeXUnderConditionTargetVal(total_targetVal, featureName_list)
 
 def mean(data):
     data = list(map(int, data))
@@ -153,5 +161,22 @@ def findSmoothingFeatures():
 def printTargetValProbability(total_targetVal):
     for targetVal in targetVal_freq:
         print('P(' + targetVal + ';alpha=' + str(alpha) + ')=' + str(targetVal_freq[targetVal]/total_targetVal))
+
+def readInputArgv():
+    i = 4
+    while i < len(sys.argv):
+        inputs.append(sys.argv[i])
+        inputDict[i-4] = sys.argv[i]
+        i += 1
+    return inputs, inputDict
+
+def computeXUnderConditionTargetVal(total_targetVal, featureName_list):
+    for targetVal in targetVal_freq:
+        p_target = targetVal_freq[targetVal]/total_targetVal
+        print('P(' + targetVal + ';alpha=' + str(alpha) + ')=' + str(p_target))
+        for i, featureVal in inputDict.items():
+            v = featureVal_underCondition_targetVal[targetVal][featureVal]
+            print('P(' + featureName_list[i] + '=' + featureVal + '|' + targetVal + ';alpha=' + str(alpha) + ') = '
+             + str(v))
 
 read_file()
