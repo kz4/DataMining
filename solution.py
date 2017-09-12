@@ -171,6 +171,7 @@ def readInputArgv():
     return inputs, inputDict
 
 def computeXUnderConditionTargetVal(total_targetVal, featureName_list):
+    p_x = 0
     for targetVal in targetVal_freq:
         p_target = targetVal_freq[targetVal]/total_targetVal
         print('P(' + targetVal + ';alpha=' + str(alpha) + ')=' + str(p_target))
@@ -181,5 +182,6 @@ def computeXUnderConditionTargetVal(total_targetVal, featureName_list):
             print('P(' + featureName_list[i] + '=' + featureVal + '|' + targetVal + ';alpha=' + str(alpha) + ') = '
              + str(v))
         print('P(x|' + targetVal + ') = ' + str(p_x_underCondition_targetVal))
-
+        p_x += p_target * p_x_underCondition_targetVal
+    print('P(x) = ', p_x)
 read_file()
