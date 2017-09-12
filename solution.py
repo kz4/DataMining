@@ -174,9 +174,12 @@ def computeXUnderConditionTargetVal(total_targetVal, featureName_list):
     for targetVal in targetVal_freq:
         p_target = targetVal_freq[targetVal]/total_targetVal
         print('P(' + targetVal + ';alpha=' + str(alpha) + ')=' + str(p_target))
+        p_x_underCondition_targetVal = 1
         for i, featureVal in inputDict.items():
             v = featureVal_underCondition_targetVal[targetVal][featureVal]
+            p_x_underCondition_targetVal *= v
             print('P(' + featureName_list[i] + '=' + featureVal + '|' + targetVal + ';alpha=' + str(alpha) + ') = '
              + str(v))
+        print('P(x|' + targetVal + ') = ' + str(p_x_underCondition_targetVal))
 
 read_file()
