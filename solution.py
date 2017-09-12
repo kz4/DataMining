@@ -4,7 +4,6 @@ import math
 from collections import defaultdict
 from numbers import Number
 
-alpha = -1
 featureName_featureVal_targetVal = {}
 index_featureName = {}
 targetVal_freq = defaultdict(lambda: 0)
@@ -13,7 +12,7 @@ digit_featureNames = set()
 non_digit_featureNames = set()
 targetValSet = set()
 featureName_featureVal_targetVal_smoothing_lst = []
-featureVal_underCondition_targetVal = {}
+featureVal_underCondition_targetVal = {}    # key is targetVal, value is featureVal
 inputs = []
 inputDict = {}
 
@@ -31,7 +30,7 @@ def read_file():
 
         featureName_featureVal_targetVal_smoothing_lst = findSmoothingFeatures()
 
-        printTargetValProbability(total_targetVal)
+        printTargetValProbability(total_targetVal, alpha)
         
         printed_already = set()
 
@@ -85,7 +84,7 @@ def read_file():
 
         print('Input: ', inputs)
 
-        computeXUnderConditionTargetVal(total_targetVal, featureName_list)
+        computeXUnderConditionTargetVal(total_targetVal, featureName_list, int(alpha))
 
 def mean(data):
     data = list(map(int, data))
@@ -158,7 +157,7 @@ def findSmoothingFeatures():
                 featureName_featureVal_targetVal_smoothing_lst.append([featureName, featureVal, targetVal])
     return featureName_featureVal_targetVal_smoothing_lst
 
-def printTargetValProbability(total_targetVal):
+def printTargetValProbability(total_targetVal, alpha):
     for targetVal in targetVal_freq:
         print('P(' + targetVal + ';alpha=' + str(alpha) + ')=' + str(targetVal_freq[targetVal]/total_targetVal))
 
@@ -170,14 +169,21 @@ def readInputArgv():
         i += 1
     return inputs, inputDict
 
-def computeXUnderConditionTargetVal(total_targetVal, featureName_list):
+def computeXUnderConditionTargetVal(total_targetVal, featureName_list, alpha):
+    print('featureVal_underCondition_targetVal', featureVal_underCondition_targetVal)
     p_x = 0
     for targetVal in targetVal_freq:
         p_target = targetVal_freq[targetVal]/total_targetVal
         print('P(' + targetVal + ';alpha=' + str(alpha) + ')=' + str(p_target))
         p_x_underCondition_targetVal = 1
         for i, featureVal in inputDict.items():
-            v = featureVal_underCondition_targetVal[targetVal][featureVal]
+            # needs to deal with situation where featureVal never exists (orange)
+            v = 0
+            if featureVal not in featureVal_underCondition_targetVal[targetVal]:
+                # add 1 bc orange is a feature
+                v = alpha / (targetVal_freq[targetVal] + alpha * (len(featureName_featureVal_targetVal[featureName_list[i]].keys()) + 1))
+            else:
+                v = featureVal_underCondition_targetVal[targetVal][featureVal]
             p_x_underCondition_targetVal *= v
             print('P(' + featureName_list[i] + '=' + featureVal + '|' + targetVal + ';alpha=' + str(alpha) + ') = '
              + str(v))
