@@ -170,7 +170,6 @@ def readInputArgv():
     return inputs, inputDict
 
 def computeXUnderConditionTargetVal(total_targetVal, featureName_list, alpha):
-    print('featureVal_underCondition_targetVal', featureVal_underCondition_targetVal)
     p_x = 0
     for targetVal in targetVal_freq:
         p_target = targetVal_freq[targetVal]/total_targetVal
