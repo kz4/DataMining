@@ -20,15 +20,25 @@ def readCsv(path):
             index_featureName[i] = featureName
 
         for row in reader:
-            data.append(row)
+            # print(row)
+            # # row = [w.replace('', '?') for w in row]
+            # print(row)
+            # data.append(row)
+            dataRow = []
             for j, val in enumerate(row):
                 featureName = index_featureName[j]
+                if not val:
+                    dataRow.append('?')
+                    continue
                 if val.isdigit():
                     featureNameThatAreDigit.add(featureName)
                 if val not in featureName_featureVal_freq[featureName]:
                     featureName_featureVal_freq[featureName][val] = 1
                 else:
                     featureName_featureVal_freq[featureName][val] += 1
+                dataRow.append(val)
+                # print(dataRow)
+            data.append(dataRow)
 
 def writeArff(path):
     res = []
