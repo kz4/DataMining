@@ -1,0 +1,94 @@
+#index 1
+#* Book Review: Discover Linux
+#@ Marjorie Richardson
+#t 1998
+#c Linux Journal
+
+#index 2
+#* MOSFET table look-up models for circuit simulation
+#@ 
+#t 1984
+#c Integration, the VLSI Journal
+
+#index 3
+#* The verification of the protection mechanisms of high-level language machines
+#@ Virgil D. Gligor
+#t 1984
+#c International Journal of Parallel Programming
+
+#index 4
+#* Another view of functional and multivalued dependencies in the relational database model
+#@ M. Gyssens;J. Paredaens
+#t 1984
+#c International Journal of Parallel Programming
+
+#index 5
+#* Entity-relationship diagrams which are in BCNF
+#@ Sushil Jajodia;Peter A. Ng;Frederick N. Springsteel
+#t 1984
+#c International Journal of Parallel Programming
+
+#index 6
+#* The computer comes of age
+#@ Rene Moreau
+#t 1984
+#c The computer comes of age
+
+#index 7
+#* Computationally efficient algorithms for a one-time pad scheme
+#@ A. G. Akritas;S. S. Lyengar;A. A. Rampuria
+#t 1984
+#c International Journal of Parallel Programming
+
+#index 8
+#* The hierarchical ordering in Multiattribute files
+#@ C. C. Chang;M. W. Du;R. C. T. Lee
+#t 1983
+#c Information Sciences: an International Journal
+
+#index 9
+#* Insertion languages
+#@ David Haussler
+#t 1983
+#c Information Sciences: an International Journal
+
+#index 10
+#* The Three-Machine No-Wait Flow Shop is NP-Complete
+#@ Hans Röck
+#t 1984
+#c Journal of the ACM (JACM)
+#% 289259
+
+#index 11
+#* Lower Bounds and Fast Algorithms for Sequence Acceleration
+#@ George M. Trojan
+#t 1984
+#c Journal of the ACM (JACM)
+
+#index 12
+#* Space-Time Trade-Offs for Banded Matrix Problems
+#@ John E. Savage
+#t 1984
+#c Journal of the ACM (JACM)
+#% 289024
+#% 408638
+#% 600828
+#% 688897
+
+#index 13
+#* The VLSI Complexity of Selected Graph Problems
+#@ Joseph Já Já
+#t 1984
+#c Journal of the ACM (JACM)
+#% 769
+#% 289452
+#% 319821
+#% 408343
+#% 598672
+#% 598673
+#% 598675
+#% 600547
+#% 600560
+#% 600811
+#% 690081
+#% 1068477

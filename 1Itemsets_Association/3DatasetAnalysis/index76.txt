@@ -1,0 +1,500 @@
+#index 1
+#* Book Review: Discover Linux
+#@ Marjorie Richardson
+#t 1998
+#c Linux Journal
+
+#index 2
+#* MOSFET table look-up models for circuit simulation
+#@ 
+#t 1984
+#c Integration, the VLSI Journal
+
+#index 3
+#* The verification of the protection mechanisms of high-level language machines
+#@ Virgil D. Gligor
+#t 1984
+#c International Journal of Parallel Programming
+
+#index 4
+#* Another view of functional and multivalued dependencies in the relational database model
+#@ M. Gyssens;J. Paredaens
+#t 1984
+#c International Journal of Parallel Programming
+
+#index 5
+#* Entity-relationship diagrams which are in BCNF
+#@ Sushil Jajodia;Peter A. Ng;Frederick N. Springsteel
+#t 1984
+#c International Journal of Parallel Programming
+
+#index 6
+#* The computer comes of age
+#@ Rene Moreau
+#t 1984
+#c The computer comes of age
+
+#index 7
+#* Computationally efficient algorithms for a one-time pad scheme
+#@ A. G. Akritas;S. S. Lyengar;A. A. Rampuria
+#t 1984
+#c International Journal of Parallel Programming
+
+#index 8
+#* The hierarchical ordering in Multiattribute files
+#@ C. C. Chang;M. W. Du;R. C. T. Lee
+#t 1983
+#c Information Sciences: an International Journal
+
+#index 9
+#* Insertion languages
+#@ David Haussler
+#t 1983
+#c Information Sciences: an International Journal
+
+#index 10
+#* The Three-Machine No-Wait Flow Shop is NP-Complete
+#@ Hans Röck
+#t 1984
+#c Journal of the ACM (JACM)
+#% 289259
+
+#index 11
+#* Lower Bounds and Fast Algorithms for Sequence Acceleration
+#@ George M. Trojan
+#t 1984
+#c Journal of the ACM (JACM)
+
+#index 12
+#* Space-Time Trade-Offs for Banded Matrix Problems
+#@ John E. Savage
+#t 1984
+#c Journal of the ACM (JACM)
+#% 289024
+#% 408638
+#% 600828
+#% 688897
+
+#index 13
+#* The VLSI Complexity of Selected Graph Problems
+#@ Joseph Já Já
+#t 1984
+#c Journal of the ACM (JACM)
+#% 769
+#% 289452
+#% 319821
+#% 408343
+#% 598672
+#% 598673
+#% 598675
+#% 600547
+#% 600560
+#% 600811
+#% 690081
+#% 1068477
+
+#index 14
+#* Computability with Pascal
+#@ John S. Mallozzi;Nicholas J. De Lillo
+#t 1984
+#c Computability with Pascal
+
+#index 15
+#* Ambiguity and decision problems concerning number systems
+#@ Karel Culik, II;Arto Salomaa
+#t 1984
+#c Information and Control
+
+#index 16
+#* The implication problem for functional and inclusion dependencies
+#@ John C. Mitchell
+#t 1984
+#c Information and Control
+
+#index 17
+#* Cynamic parallel memories
+#@ Uzi Vishkin;Avi Wigderson
+#t 1984
+#c Information and Control
+
+#index 18
+#* Succinct representations of graphs
+#@ Hana Galperin;Avi Wigderson
+#t 1984
+#c Information and Control
+
+#index 19
+#* On storage media with after effects
+#@ H. S. Witsenhausen;A. D. Wyner
+#t 1984
+#c Information and Control
+
+#index 20
+#* A necessary and sufficient condition in order that a Herbrand interpretation be expressive relative to recursive programs
+#@ 
+#t 1984
+#c Information and Control
+
+#index 21
+#* Enclosing methods in perturbed nonlinear operator equations
+#@ J W. Schmidt;H Schneider
+#t 1984
+#c Computing
+
+#index 22
+#* On two more Eigenvalue methods for an alternating sequential parallel system
+#@ Y Wallach
+#t 1984
+#c Computing
+
+#index 23
+#* Random variate generation for unimodal and monotone densities
+#@ L Devroye
+#t 1984
+#c Computing
+
+#index 24
+#* An approximation method of the local type. Application to a problem of heart potential mapping
+#@ M Bozzini;F De Tisi;L Lenarduzzi
+#t 1984
+#c Computing
+
+#index 25
+#* Computing surfaces of constant mean curvature with singularities
+#@ D E Hewgill
+#t 1984
+#c Computing
+
+#index 26
+#* Software engineering with MODULA-2 and ADA
+#@ Richard Wiener;Richard Sincovec
+#t 1984
+#c Software engineering with MODULA-2 and ADA
+
+#index 27
+#* Frame theory and computations
+#@ Viacheslav E. Wolfengagen
+#t 1984
+#c Computers and Artificial Intelligence
+
+#index 28
+#* Natural language interface to the question-answering system for physicians
+#@ Leonard Bolc;Tomek Strzalkowski
+#t 1984
+#c Computers and Artificial Intelligence
+
+#index 29
+#* Some issues in the semantics and pragmatics of definite reference in the context of natural language database access
+#@ Genevieve Berry-Rogghe
+#t 1984
+#c Computers and Artificial Intelligence
+
+#index 30
+#* Stationary wave solutions of a system of reaction-diffusion equations derived from the Fitzhugh-Nagumo equations
+#@ Gene A. Klaasen;William C. Troy
+#t 1984
+#c SIAM Journal on Applied Mathematics
+
+#index 31
+#* Up and running: the small business computer implementation cookbook
+#@ Jess W. Curry, Jr.;David M. Bonner
+#t 1984
+#c Up and running: the small business computer implementation cookbook
+
+#index 32
+#* Proc. IFIP working conference on Programming Languages and System Design
+#@ J Bormann
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 33
+#* Fast automatic liveness analysis of hierarchical parallel systems
+#@ Johannes Rohrich
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 34
+#* Concatenable type declarations: their applications and implementaion
+#@ A Kreczmar;A Salwicki
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 35
+#* On the coherence of programming language and programming methodology
+#@ Broy Manfred;Peter Pepper
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 36
+#* On the design of data abstraction mechanisms for compiler description languages1)
+#@ Harald Ganzinger
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 37
+#* The remodularization of a compiler by abstract data types
+#@ Klaus Bothe
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 38
+#* Experience with abstract data type specifications in a compiler project
+#@ Ulrich L. Hupbach;Heinz Kaphengst
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 39
+#* XYZ: a program development environment based on temporal logic
+#@ Chih-sung Tang
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 40
+#* Design and verification oriented microprogram transformations
+#@ Piotr Dembinski
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 41
+#* ELSA - an extensible programming system
+#@ C. H. Lindsey
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 42
+#* A skeleton interpreter for specialized languages
+#@ J Steensgaard-Madsen
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 43
+#* Comparing PASCAL and MODULA-2 as systems programming languages
+#@ Pieter H. Hartel
+#t 1983
+#c Proc. IFIP working conference on Programming Languages and System Design
+
+#index 44
+#* ADA: Concurrent Programming
+#@ Narain Gehani
+#t 1984
+#c ADA: Concurrent Programming
+
+#index 45
+#* Computers, Data Processing, and The Law
+#@ Steven L. Mandell
+#t 1984
+#c Computers, Data Processing, and The Law
+
+#index 46
+#* On the Multiple Implementation of Abstract Data Types Within a Computation
+#@ J. R White
+#t 1983
+#c IEEE Transactions on Software Engineering
+#! A fundamental step in the software design process is the selection of a refinement (implementation) for a data abstraction. This step traditionally involves investigating the expected performance of a system under different refinements of an abstraction and then selecting a single alternative which minimizes some performance cost metric. In this paper we reformulate this design step to allow different refinements of the same data abstraction within a computation. This reformulation reflects the fact that the implementation appropriate for a data abstraction is dependent on the behavior exhibited by the objects of the abstraction. Since this behavior can vary among the objects of a computation, a single refinement is often inappropriate. Accordingly, three frameworks are presented for understanding and representing variations in the behavior of objects and, thus, the potential for multiple implementations. The three frameworks are based upon: 1) a static partitioning of objects into disjoint implementation classes; 2) static partitioning of classes into implementation regions; and 3) dynamic partitioning of classes into implementation regions. These frameworks and analytic tools useful in investigating expected performance under multiple implementations are described in detail.
+
+#index 47
+#* Matings in matrices
+#@ Wolfgang Bibel
+#t 1983
+#c Communications of the ACM
+#% 25470
+#% 289292
+#% 289318
+#% 384112
+#% 456887
+#% 456888
+#% 556913
+#% 569085
+
+#index 48
+#* on Automata, languages and programming
+#@ M. Nielsen
+#t 1982
+#c on Automata, languages and programming
+
+#index 49
+#* Register Allocation in Optimizing Compilers
+#@ Bruce W. Leverett
+#t 1983
+#c Register Allocation in Optimizing Compilers
+
+#index 50
+#* Polymorphic programming languages: design and implementation
+#@ David M. Harland
+#t 1984
+#c Polymorphic programming languages: design and implementation
+
+#index 51
+#* Analysis of speedup in distributed algorithms
+#@ John P. Fishburn
+#t 1984
+#c Analysis of speedup in distributed algorithms
+
+#index 52
+#* Automated microcode synthesis
+#@ Robert A. Mueller
+#t 1984
+#c Automated microcode synthesis
+
+#index 53
+#* A class of generalized stochastic Petri nets for the performance evaluation of multiprocessor systems
+#@ Marco Ajmone Marsan;Gianni Conte;Gianfranco Balbo
+#t 1984
+#c ACM Transactions on Computer Systems (TOCS)
+#% 317871
+#% 598103
+#% 689727
+
+#index 54
+#* Static grouping of small objects to enhance performance of a paged virtual memory
+#@ James W. Stamos
+#t 1984
+#c ACM Transactions on Computer Systems (TOCS)
+#% 103
+#% 288713
+#% 317781
+#% 320071
+#% 320108
+#% 321612
+#% 322248
+#% 348986
+#% 602671
+#% 602693
+#% 602694
+#% 602695
+#% 606655
+#% 607606
+#% 669003
+#% 669876
+
+#index 55
+#* A supervised learning algorithm for hierarchical classification of fuzzy patterns
+#@ Prasenjit Biswas;Arun K. Majumdar
+#t 1983
+#c Information Sciences: an International Journal
+
+#index 56
+#* Quantifiers in the formulation of multiple objective decision functions
+#@ Ronald R. Yager
+#t 1983
+#c Information Sciences: an International Journal
+
+#index 57
+#* On the implication operator in fuzzy logic
+#@ Ronald R. Yager
+#t 1983
+#c Information Sciences: an International Journal
+
+#index 58
+#* The application of coding theory to the design of combinatorial filing schemes of any order
+#@ Lois Wright Hawkes
+#t 1983
+#c Information Sciences: an International Journal
+
+#index 59
+#* Algorithmic theories of data structures
+#@ Andrzej Salwicki
+#t 1982
+#c on Automata, languages and programming
+
+#index 60
+#* Micro-PROLOG: programming in logic
+#@ K. L Clark;F. G McCabe
+#t 1984
+#c Micro-PROLOG: programming in logic
+
+#index 61
+#* The DISS methodology of distributed system simulation
+#@ Myron Melman;Miron Livny
+#t 1984
+#c Simulation
+
+#index 62
+#* Information Technology Research Development Applications
+#@ C J. van Rijsbergen
+#t 1984
+#c Information Technology Research Development Applications
+
+#index 63
+#* Special-purpose hardware and effective information processing
+#@ Maristella Agosti
+#t 1984
+#c Information Technology Research Development Applications
+
+#index 64
+#* Relevance feedback and a fuzzy set of search terms in an information retrieval system
+#@ A F. Smeaton
+#t 1984
+#c Information Technology Research Development Applications
+
+#index 65
+#* Direct file organization for lemmatized text retrieval
+#@ K Devine;F J. Smith
+#t 1984
+#c Information Technology Research Development Applications
+
+#index 66
+#* Soft evaluation of Boolean search queries in information retrieval systems
+#@ C D. Paice
+#t 1984
+#c Information Technology Research Development Applications
+
+#index 67
+#* Augmented semantic networks for an enterprise knowledge base
+#@ Paltin Sturdza
+#t 1984
+#c Information Technology Research Development Applications
+
+#index 68
+#* Technology and Science of Informatics
+#@ Bertrand Meyer
+#t 1984
+#c Technology and Science of Informatics
+
+#index 69
+#* A comparative study of some distributed systems
+#@ Marc Guillemont
+#t 1984
+#c Technology and Science of Informatics
+
+#index 70
+#* Controlled execution of timed petri nets
+#@ Philippe Chretienne
+#t 1984
+#c Technology and Science of Informatics
+
+#index 71
+#* A two-level control structure for parallel heuristic programming
+#@ Andre Schiper;Giovanni Coray;Beat Hirsbrunner
+#t 1984
+#c Technology and Science of Informatics
+
+#index 72
+#* SCEPTRE: proposed standard for a real-time executive kernel
+#@ F Browaeys;H Derriennic;P Desclaud;H Fallour;C Faulle;J Febvre;J E. Hanne;M Kronental;J J. Simon;D Vojnovic
+#t 1984
+#c Technology and Science of Informatics
+
+#index 73
+#* The application of human factors to the needs of the novice computer user
+#@ Anne Lee Paxton;Edward J. Turner
+#t 1984
+#c International Journal of Man-Machine Studies
+
+#index 74
+#* Type-checking in an untyped language
+#@ Allan Ramsay
+#t 1984
+#c International Journal of Man-Machine Studies
+
+#index 75
+#* A methodology for interactive evaluation of user reactions to software packagesn empirical analysis of system performance, interaction, and run time
+#@ Avi Rushinek;Sara F. Rushinek;Joel Stutz
+#t 1984
+#c International Journal of Man-Machine Studies
+
+#index 76
+#* The depth/breadth trade-off in the design of menu-driven user interfaces
+#@ John I. Kiger
+#t 1984
+#c International Journal of Man-Machine Studies
