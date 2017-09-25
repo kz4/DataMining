@@ -16,13 +16,11 @@ def readDat(path):
                 if pos > maxVal:
                     maxVal = pos
                 temp.append(pos-1)
-                # temp.append(str(pos-1) + ' 1')
             temp = sorted(temp)
             addOneLst = []
             for i in temp:
                 addOneLst.append(str(i) + ' 1')
             dataRowFormat = '{}{}{}'.format('{', ', '.join(addOneLst), '}')
-            # dataRowFormat = '{}{}{}'.format('{', ', '.join(temp), '}')
             dataRes.append(dataRowFormat)
 
     finalRes = ['@RELATION test']
