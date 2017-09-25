@@ -10,12 +10,12 @@ def readDat(path):
         data = f.readlines()
         for row in data:
             row = row.replace('\n', '')
-            temp = []
+            temp = set()
             for i, featureVal in enumerate(row.split()):
                 pos = int(featureVal)
                 if pos > maxVal:
                     maxVal = pos
-                temp.append(pos-1)
+                temp.add(pos-1)
             temp = sorted(temp)
             addOneLst = []
             for i in temp:
