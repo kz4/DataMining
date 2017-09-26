@@ -108,8 +108,8 @@ def readTxt(path):
     # 3.2b Calculate the mean and standard deviation of the number of publications per author
     print()
     print()
-    print(author_publications)
-    print(publications_per_author_lst)
+    # print(author_publications)
+    # print(publications_per_author_lst)
     mean_publications_per_author = mean(publications_per_author_lst)
     stdev_publications_per_author = stdev(publications_per_author_lst)
     q1, q2, q3 = quartile(sorted(publications_per_author_lst))
@@ -214,7 +214,7 @@ def readTxt(path):
         if len(venue_publications[venue]) >= 10 and impact(venue) == highestImpactFactor_for10:
             citations_publications_for_highest_IF += venue_publications[venue]
     print('citations_publications_for_highest_IF: ', citations_publications_for_highest_IF)
-    citations_counts_for_highest_IF = sorted([len(publication_citations[publication]) for publication in citations_publications_for_highest_IF])
+    citations_counts_for_highest_IF = sorted([len(publication_citations[publication]) for publication in citations_publications_for_highest_IF if publication in publication_citations])
     print('citations_counts_for_highest_IF: ', citations_counts_for_highest_IF)
 
     if citations_counts_for_highest_IF:
@@ -231,8 +231,10 @@ def readTxt(path):
     # print('publication_citations: ', publication_citations)
     ave_ref_publications_per_year = []
     ave_cite_publications_per_year = []
-    sortedYears = sorted(year_publications)
+    # print('year_publications: ', year_publications)
+    sortedYears = sorted(int(year) for year in year_publications if year)
     for year in sortedYears:
+        year = str(year)
         publications = year_publications[year]
         totalRefs = totalCites = 0
         numOfPublicationsInThisYear = len(publications)
