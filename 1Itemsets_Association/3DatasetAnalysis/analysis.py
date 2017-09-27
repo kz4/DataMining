@@ -15,7 +15,6 @@ year_publications = {}
 publication_references = {}
 publication_citations = {}
 references = set()
-authors_venues_publications_citations = [0, 0, 0, 0]
 
 def analyze(path):
     readTxt(path)
@@ -23,7 +22,6 @@ def analyze(path):
 def readTxt(path):
     curIndex = -1
     totalDistinctPublication = 0
-    totalDistinctReferences = 0
     with open(path, 'rt') as f:
         data = f.readlines()
         data = [d for d in data if d != '\n']
@@ -59,7 +57,6 @@ def readTxt(path):
             elif row.startswith('#% '):
                 ref = row[3:]
                 references.add(ref)
-                totalDistinctReferences += 1
                 if curIndex not in publication_references:
                     publication_references[curIndex] = [ref]
                 else:
@@ -84,20 +81,15 @@ def readTxt(path):
     print('Total distinct venues: ', len(venue_numOfPublication))
     print('Total distinct publications: ', str(totalDistinctPublication))
     print('Total distinct citations/references: ', len(references))
-    print('Total distinct citations/references: ', totalDistinctReferences)
 
     # Total distinct authors:  1484999
     # Total distinct venues:  255686
     # Total distinct publications:  1976815
     # Total distinct citations/references:  871089
 
-    authors_venues_publications_citations[0] = len(author_publications)
-    authors_venues_publications_citations[1] = len(venue_numOfPublication)
-    authors_venues_publications_citations[2] = totalDistinctPublication
-    authors_venues_publications_citations[3] = len(references)
-
     # 3.2a Histogram of the number of publications per author
     publications_per_author_lst = [len(lstOfPublications) for lstOfPublications in author_publications.values()]
+    # publications_per_author_lst = [len(author_publications[author]) for author in author_publications]
     plt.xlabel('Number of publications')
     plt.ylabel('Count of authors')
     plt.title('Histogram of Number of publications per author')
@@ -152,7 +144,7 @@ def readTxt(path):
     plt.ylabel('Count of publication')
     plt.title('Histogram of Number of references per publication')
     plt.hist([len(lstOfReferences) for lstOfReferences in publication_references.values()])
-    # plt.yscale('log')
+    plt.yscale('log')
     plt.show()
 
     # Histogram of the number of citations per publication
@@ -160,7 +152,7 @@ def readTxt(path):
     plt.ylabel('Count of publication')
     plt.title('Histogram of Number of citations per publication')
     plt.hist([len(lstOfCitations) for lstOfCitations in publication_citations.values()])
-    # plt.yscale('log')
+    plt.yscale('log')
     plt.show()
 
     maxRef = max([len(lstOfReferences) for lstOfReferences in publication_references.values()])
@@ -180,7 +172,7 @@ def readTxt(path):
     plt.ylabel('Count of venues')
     plt.title('Histogram of Number of citations per venue')
     plt.hist(impact_factors)
-    # plt.yscale('log')
+    plt.yscale('log')
     plt.show()
 
     # 3.3c Highest impact factor, believable?
@@ -198,7 +190,7 @@ def readTxt(path):
     plt.ylabel('Count of venues')
     plt.title('Histogram of Number of citations per venue')
     plt.hist(impact_factors_for10)
-    # plt.yscale('log')
+    plt.yscale('log')
     plt.show()
 
     # Highest impact factor for publications over 10, believable?
