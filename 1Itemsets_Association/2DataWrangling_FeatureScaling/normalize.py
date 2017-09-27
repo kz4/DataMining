@@ -1,6 +1,8 @@
 import sys
 import collections
 
+# The key part of this is we read features by columns, not by rows
+# So, we keep a dict featureIndex_val so we can keep track of the columns
 featureIndex_val = collections.OrderedDict()
 originalData = []
 normalizedData = []

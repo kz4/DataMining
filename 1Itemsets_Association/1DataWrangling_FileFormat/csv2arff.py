@@ -24,6 +24,7 @@ def readCsv(path):
             for j, val in enumerate(row):
                 featureName = index_featureName[j]
                 if not val:
+                    # If the value is missing, make sure to append with ?
                     dataRow.append('?')
                     continue
                 if val.isdigit():

@@ -89,6 +89,7 @@ def readTxt(path):
 
     # 3.2a Histogram of the number of publications per author
     # publications_per_author_lst = [len(lstOfPublications) for lstOfPublications in author_publications.values()]
+    # There are about 40000 publications with no authors' names associated with them
     publications_per_author_lst = [len(author_publications[author]) for author in author_publications]
     plt.xlabel('Number of publications')
     plt.ylabel('Count of authors including publications without author names')
@@ -97,6 +98,7 @@ def readTxt(path):
     plt.yscale('log')
     plt.show()
 
+    # This is the plot that we only count the publications which have authors' name associated with them
     publications_per_author_lst = [len(author_publications[author]) for author in author_publications if author]
     plt.xlabel('Number of publications')
     plt.ylabel('Count of authors excluding publications without author names')
