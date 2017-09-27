@@ -88,10 +88,18 @@ def readTxt(path):
     # Total distinct citations/references:  871089
 
     # 3.2a Histogram of the number of publications per author
-    publications_per_author_lst = [len(lstOfPublications) for lstOfPublications in author_publications.values()]
-    # publications_per_author_lst = [len(author_publications[author]) for author in author_publications]
+    # publications_per_author_lst = [len(lstOfPublications) for lstOfPublications in author_publications.values()]
+    publications_per_author_lst = [len(author_publications[author]) for author in author_publications]
     plt.xlabel('Number of publications')
-    plt.ylabel('Count of authors')
+    plt.ylabel('Count of authors including publications without author names')
+    plt.title('Histogram of Number of publications per author')
+    plt.hist(publications_per_author_lst)
+    plt.yscale('log')
+    plt.show()
+
+    publications_per_author_lst = [len(author_publications[author]) for author in author_publications if author]
+    plt.xlabel('Number of publications')
+    plt.ylabel('Count of authors excluding publications without author names')
     plt.title('Histogram of Number of publications per author')
     plt.hist(publications_per_author_lst)
     plt.yscale('log')
@@ -241,12 +249,6 @@ def readTxt(path):
     x = sortedYears
     y = ave_ref_publications_per_year
     z = ave_cite_publications_per_year
-    # print('len x: ', len(x))
-    # print('len y: ', len(y))
-    # print('len z: ', len(z))
-    # print('x: ', x)
-    # print('y: ', y)
-    # print('z: ', z)
 
     # plot
     plt.xlabel('Average number of references')
