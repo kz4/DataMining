@@ -1,0 +1,375 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{pgfplots}
+\allsectionsfont{ \normalfont\scshape} % Make the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{CS6220} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Self-Test \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{} % Your name
+
+\date{\normalsize2017-09-12} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{Bayes' Rule}
+
+\begin{align*} 
+P(rain) = 73/365 = 0.2
+\Rightarrow
+P(not rain) = 0.8
+\end{align*}
+\begin{align*} 
+p(predictRain|rain) = 0.7
+\end{align*}
+\begin{align*}
+p(predictRain|not rain) = 0.3
+\end{align*}
+
+\[
+\begin{split} 
+P(rain|predictRain)
+  &= \dfrac{P(rain)P(predictRain|rain)}{P(predictRain)}
+  \\
+  &= \dfrac{P(predictRain|rain)P(rain)}{P(predictRain|rain)P(rain) + P(predictRain|not\space rain)P(not\space rain)}
+  \\
+  &=  \dfrac{0.7*0.2}{0.7*0.2 + 0.3*0.8}
+  \\
+   &=  0.37
+\end{split}
+\]
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\section{Probability Distributions}
+
+\begin{align*}
+A = 
+\begin{bmatrix}
+A_{11} & A_{21} \\
+A_{21} & A_{22}
+\end{bmatrix}
+\end{align*}
+\begin{equation*}\label{SplitFunc}
+p(x) = \left\{
+	\begin{array}{rcl}
+       \int_{0}^{x} 4t \mathrm{d}t & \mbox{for} & 0\leq x \leq1/2 \\
+       \int_{0}^{x} (-4t+4) \mathrm{d}t & \mbox{for} & 1/2\leq x \leq1
+  	\end{array}\right.
+\end{equation*}
+\begin{equation*}\label{SplitFunc}
+p(x) = \left\{
+	\begin{array}{rcl}
+       2x^{2}+C_1 & \mbox{for} & 0\leq x \leq1/2 \\
+      -2x^{2} + 4x+C_2 & \mbox{for} & 1/2\leq x \leq1
+  	\end{array}\right.
+\end{equation*}
+
+\begin{align*}
+\text{Assume the entire mass is} \in [0, 1] \\
+\end{align*}
+\begin{align*}
+P(0) = 0 \\
+P(1) = 1 \\
+\end{align*}
+\begin{align*}
+\text{Plug back into the equation and we get} \\
+\end{align*}
+\begin{align*}
+C_1 = 0 \\
+C_2 = -1
+\end{align*}
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\section{Discrete Expectation}
+
+    \[
+        \begin{split}
+            E(x)  &= \frac{1}{2}*1 + \frac{1}{10}*2 + \frac{1}{10}*3 + \frac{1}{10}*4 + \frac{1}{10}*5 + \frac{1}{10}*6
+            \\
+            &= 2.5
+        \end{split}
+    \]
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\section{Expectation Properties}
+    \[
+        \begin{split}
+            Var[x]  &= E[(x-\mu)^2]
+\\&= E[(x-E(x))^2]
+\\&= E[x^2 - 2xE(x)+ (E(x))^2]
+\\&= E[x^2] - 2E(x)E(x)+ (E(x))^2
+\\&= E[x^2] - (E(x))^2
+        \end{split}
+    \]
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
+%----------------------------------------------------------------------------------------
+
+\section{Matrices/Linear Equations}
+a.
+    \[
+        \begin{split}
+\begin{bmatrix}
+2 & 1 & 1\\ 
+4 & 0 & 2\\ 
+1 & 2 & 0
+\end{bmatrix} x
+=
+ \begin{bmatrix}
+3\\ 
+10\\ 
+-2
+\end{bmatrix}
+        \end{split}
+    \]
+b.
+    \[
+        \begin{split}
+\begin{bmatrix}
+4 & 2 & 2\\ 
+4 & 0 & 2\\ 
+2 & 2 & 0
+\end{bmatrix} x
+=
+ \begin{bmatrix}
+6\\ 
+10\\ 
+-2
+\end{bmatrix}
+\Rightarrow 
+\begin{bmatrix}
+0 & 2 & 0\\ 
+4 & 0 & 2\\ 
+4 & 4 & 0
+\end{bmatrix} x
+=
+ \begin{bmatrix}
+-4\\ 
+10\\ 
+-4
+\end{bmatrix}
+\Rightarrow\\
+\begin{bmatrix}
+0 & 2 & 0\\ 
+4 & 0 & 2\\ 
+4 & 0 & 0
+\end{bmatrix} x
+=
+ \begin{bmatrix}
+-4\\ 
+10\\ 
+4
+\end{bmatrix}
+\Rightarrow 
+\begin{bmatrix}
+0 & 2 & 0\\ 
+0 & 0 & 2\\ 
+4 & 0 & 0
+\end{bmatrix} x
+=
+ \begin{bmatrix}
+-4\\ 
+6\\ 
+4
+\end{bmatrix}\\
+s =
+ \begin{bmatrix}
+1\\ 
+-2\\ 
+3
+\end{bmatrix}
+        \end{split}
+    \]
+    
+ c. 
+     \[
+        \begin{split}
+	 \begin{bmatrix}
+3\\ 
+10\\ 
+-2
+\end{bmatrix} = 
+ \begin{bmatrix}
+2\\ 
+4\\ 
+2
+\end{bmatrix} -2
+ \begin{bmatrix}
+1\\ 
+0\\ 
+2
+\end{bmatrix} + 3
+ \begin{bmatrix}
+1\\ 
+2\\ 
+0
+\end{bmatrix}
+        \end{split}
+    \]
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 6
+%----------------------------------------------------------------------------------------
+
+
+\section{Matrices}
+a.
+    \[
+        \begin{split}
+            det(A)  &= 1*4*4 + 2*3*1 + 3*1*3 - 1*4*3 + 3*3*1 - 4*1*2
+            \\
+            &= 2
+        \end{split}
+    \]
+
+b.
+    \[
+\begin{bmatrix}
+0 & 2 & 0\\ 
+1 & 4 & 3\\ 
+0 & 1 & -1
+\end{bmatrix} x
+\Rightarrow
+\begin{bmatrix}
+0 & 2 & 0\\ 
+1 & 4 & 3\\ 
+0 & 0 & 2
+\end{bmatrix}
+    \]
+
+As the matrix have no rows of all 0, therefore the matrix is invertible\\
+
+c.
+As the matrix is invertible, the rank equals the number of rows which is 3
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 7
+%----------------------------------------------------------------------------------------
+
+\section{Matrices}
+    \[
+\left | A - \lambda I \right | = \begin{vmatrix}
+3-\lambda & 6\\ 
+1 & 4-\lambda
+\end{vmatrix}
+    \]
+    \[
+for \space \lambda = 1:
+\left | A - \lambda I \right | = \begin{vmatrix}
+2 & 6\\ 
+1 & 3
+\end{vmatrix}
+\begin{vmatrix}
+v1\\
+v2
+\end{vmatrix}
+=
+\begin{vmatrix}
+0\\
+0
+\end{vmatrix}
+    \]
+        
+So we don't even need to plug in 6, the answer is b
+    \[
+\begin{vmatrix}
+-3\\
+1
+\end{vmatrix}
+    \]
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 8
+%----------------------------------------------------------------------------------------
+
+\section{Matrices}
+
+p = 0
+\[
+        \begin{split}
+		\left \| x \right \|_0 = 4 
+        \end{split}
+        \begin{align*}
+	        \text{(number of non-zero elements)}
+        \end{align*}
+\]
+
+p = 1
+\[
+        \begin{split}
+\left \| x \right \|_1 =  \sum_{i = 1}^{n} \left | x_i \right |
+&= \left | 2 \right | + \left | 1 \right | + \left | -4 \right | + \left | -2 \right |
+\\
+&= 9
+        \end{split}
+\]
+
+p = 2
+\[
+        \begin{split}
+\left \| x \right \|_2 =  (\sum_{i = 1}^{n} \left | x_i \right |)^{\!1/2}
+&= \sqrt{\left | 2 \right |^2 + \left | 1 \right |^2 + \left | -4 \right |^2 + \left | -2 \right |^2}
+\\
+&= 5
+        \end{split}
+\]
+
+    \[
+    p = \infty
+        \begin{split}
+\left \| x \right \|_\infty =  \lim_{p\to\infty}(\sum_{i = 1}^{p} \left | x_i \right |)^{\!1/p}
+&= \max_{i}|x_i|_\infty
+\\
+&= 4
+        \end{split}
+    \]
+
+\end{document}
