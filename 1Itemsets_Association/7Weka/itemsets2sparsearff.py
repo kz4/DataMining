@@ -28,7 +28,7 @@ def readDat(path):
 
     finalRes = ['@RELATION test']
     for i in range(maxVal):
-        finalRes.append('@ATTRIBUTE i' + str(i+1) + ' {0, 1}')
+        finalRes.append('@ATTRIBUTE i{} {{0, 1}}'.format(i+1))
     finalRes.append('@DATA')
     finalRes += dataRes
     finalResStr = '\n'.join(finalRes)
