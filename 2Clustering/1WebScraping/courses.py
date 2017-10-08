@@ -128,8 +128,15 @@ def _parse_course_listing(html):
     #     print('hello world!!!!!')
     # There is a repeated class name due to find all th and a, filter them out
     class_info = [info for info in class_info if not (info.name == 'th' and info['class'] == ['ddtitle'])]
+    # Filter out Syllabus Available link tag
+    class_info = [info for info in class_info if not info.text == 'Syllabus Available']
+    # print('class_info: ', class_info)
     cur_prerequestLst = {}
     class_num_label_set = set()
+    # class_num should be unique
+    # e.g CS_5001 [ label="CS 5001\n" ]; and CS_5001 [ label="CS 5001\nIntensive Foundations of Computer Science" ];
+    # we only want to take the latter
+    class_num_set_class_num_label_set = {}
     # class_num_label_lst = []
     i = 0
     new_class = True
@@ -138,7 +145,12 @@ def _parse_course_listing(html):
         if new_class and class_info[i].text != 'Return to Previous':
             name, crn, class_num, class_num_hyphenated, section_campus, credits = _parse_class_str(class_info[i].text)
             cur_prerequestLst[class_num_hyphenated] = []
-            class_num_label_set.add('{} [ label="{}\n{}" ];'.format(class_num_hyphenated, class_num, name))
+            # class_num_set.add(class_num_hyphenated)
+            # if (class_num_hyphenated in class_num_set_class_num_label_set):
+            class_num_set_class_num_label_set[class_num_hyphenated] = '{} [ label="{}\n{}" ];'.format(class_num_hyphenated, class_num, name)
+            # else:
+
+            # class_num_label_set.add('{} [ label="{}\n{}" ];'.format(class_num_hyphenated, class_num, name))
             # class_num_label_lst.append('{} [ label="{}\n{}" ]'.format(class_num_hyphenated, class_num, name))
             new_class = False
             while i < len(class_info) - 1:
@@ -146,7 +158,9 @@ def _parse_course_listing(html):
                     i += 1
                     prereq = '_'.join(class_info[i].text.strip().split(' '))
                     cur_prerequestLst[class_num_hyphenated].append(prereq)
-                    class_num_label_set.add('{} [ label="{}\n{}" ];'.format(prereq, class_info[i].text.strip(), ''))
+                    if prereq not in class_num_set_class_num_label_set:
+                        # class_num_label_set.add('{} [ label="{}\n{}" ];'.format(prereq, class_info[i].text.strip(), ''))
+                        class_num_set_class_num_label_set[prereq] = '{} [ label="{}\n{}" ];'.format(prereq, class_info[i].text.strip(), '')
                     # class_num_label_lst.append('{} [ label="{}\n{}" ]'.format(prereq, class_info[i].text.strip(), ''))
                 else:
                     break
@@ -156,7 +170,8 @@ def _parse_course_listing(html):
         # print(i, class_info[i].text)
         i += 1
     # for info in class_info:
-    class_num_label_lst = sorted(list(class_num_label_set))
+    # class_num_label_lst = sorted(list(class_num_label_set))
+    class_num_label_lst = sorted(list(class_num_set_class_num_label_set.values()))
 
     # print('cur_prerequestLst: ', cur_prerequestLst)
     # print('class_num_label_lst: ', class_num_label_lst)
