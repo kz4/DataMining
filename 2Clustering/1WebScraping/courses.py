@@ -302,9 +302,13 @@ def print_course_dot(cur_prerequestLst, class_num_label_lst):
     # class_num_label_str = ast.literal_eval(class_num_label_lst)
     # print('class_num_label_str: ', class_num_label_str)
     arrowLst = []
+    seen = set()
     for cur, prerequestLst in cur_prerequestLst.items():
         for prereq in sorted(prerequestLst):
-            arrowLst.append('{} -> {};'.format(prereq, cur))
+            arrowStr = '{} -> {};'.format(prereq, cur)
+            if arrowStr not in seen:
+                arrowLst.append(arrowStr)
+                seen.add(arrowStr)
     res = []
     res.append('digraph G {')
     res.append('rankdir="LR";')
