@@ -147,7 +147,7 @@ def _parse_course_listing(html):
             cur_prerequestLst[class_num_hyphenated] = []
             # class_num_set.add(class_num_hyphenated)
             # if (class_num_hyphenated in class_num_set_class_num_label_set):
-            class_num_set_class_num_label_set[class_num_hyphenated] = '{} [ label="{}\n{}" ];'.format(class_num_hyphenated, class_num, name)
+            class_num_set_class_num_label_set[class_num_hyphenated] = '{} [ label="{}\\n{}" ];'.format(class_num_hyphenated, class_num, name)
             # else:
 
             # class_num_label_set.add('{} [ label="{}\n{}" ];'.format(class_num_hyphenated, class_num, name))
@@ -160,7 +160,7 @@ def _parse_course_listing(html):
                     cur_prerequestLst[class_num_hyphenated].append(prereq)
                     if prereq not in class_num_set_class_num_label_set:
                         # class_num_label_set.add('{} [ label="{}\n{}" ];'.format(prereq, class_info[i].text.strip(), ''))
-                        class_num_set_class_num_label_set[prereq] = '{} [ label="{}\n{}" ];'.format(prereq, class_info[i].text.strip(), '')
+                        class_num_set_class_num_label_set[prereq] = '{} [ label="{}\\n{}" ];'.format(prereq, class_info[i].text.strip(), '')
                     # class_num_label_lst.append('{} [ label="{}\n{}" ]'.format(prereq, class_info[i].text.strip(), ''))
                 else:
                     break
