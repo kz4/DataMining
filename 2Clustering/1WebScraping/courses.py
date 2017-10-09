@@ -192,6 +192,9 @@ def _parse_course_listing(html):
 def _parse_class_str(class_str):
     # print(class_str.strip().split(' - '))
     name, crn, class_num, section_campus, credits = class_str.strip().split(' - ')
+    # Remove honor symbol from class name
+    if ' (Hon)' in name:
+        name = name.replace(' (Hon)', '')
     class_num_hyphenated = '_'.join(class_num.split(' '))
     # print(name, crn, class_num, section_campus, credits)
     return name, crn, class_num, class_num_hyphenated, section_campus, credits
