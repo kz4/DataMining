@@ -105,55 +105,31 @@ def instructor_to_code(searchform, instructor):
 ##############################################################################
 
 # parses the html of a course search, returns...
-# TODO: DOCUMENT RETURN WITH EXAMPLES HERE (must be a tuple)
+# DOCUMENT RETURN WITH EXAMPLES HERE (must be a tuple)
 def _parse_course_listing(html):
     retval = { "courses":{} }
     soup = BeautifulSoup(html, "html.parser")
 
-    # retval["title"] = str(soup.title.string)
-
     pagebody = soup.find("div", {"class":"pagebodydiv"})
-    # class_info = pagebody.find_all("TH", {"CLASS":"ddtitle"})
-    # class_info = pagebody.find_all(["th", {"class":"ddtitle"}, "form"])
     class_info = pagebody.find_all(["th", {"class":"ddtitle"}, "a"])
-    # class_info = pagebody.find_all("a")
-    # class_info = pagebody.find_all("TH")
-    # class_info = pagebody.find_all("TH")
-    # print('pagebody: ', pagebody)
-    # print('class_info: ', class_info)
-    # print('class_info length: ', len(class_info))
-    # print(class_info[0])
-    # print(class_info[0]['class'])
-    # if class_info[0]['class'] == ['ddtitle']:
-    #     print('hello world!!!!!')
 
     # There is a repeated class name due to find all th and a, filter them out
     # Filter out Syllabus Available link tag and Return to Previous link tag
     class_info = [info for info in class_info if not ((info.name == 'th' and info['class'] == ['ddtitle']) \
      or info.text == 'Syllabus Available' or info.text == 'Return to Previous')]
-    # print('class_info: ', class_info)
     cur_prerequestLst = {}
-    class_num_label_set = set()
     # class_num should be unique
     # e.g CS_5001 [ label="CS 5001\n" ]; and CS_5001 [ label="CS 5001\nIntensive Foundations of Computer Science" ];
     # we only want to take the latter
     class_num_set_class_num_label_set = {}
-    # class_num_label_lst = []
+
     i = 0
     new_class = True
-    # for info in class_info:
     for i in range(len(class_info)):
-        # if new_class and class_info[i].text != 'Return to Previous':
         if new_class:
             name, crn, class_num, class_num_hyphenated, section_campus, credits = _parse_class_str(class_info[i].text)
             cur_prerequestLst[class_num_hyphenated] = []
-            # class_num_set.add(class_num_hyphenated)
-            # if (class_num_hyphenated in class_num_set_class_num_label_set):
             class_num_set_class_num_label_set[class_num_hyphenated] = '{} [ label="{}\\n{}" ];'.format(class_num_hyphenated, class_num, name)
-            # else:
-
-            # class_num_label_set.add('{} [ label="{}\n{}" ];'.format(class_num_hyphenated, class_num, name))
-            # class_num_label_lst.append('{} [ label="{}\n{}" ]'.format(class_num_hyphenated, class_num, name))
             new_class = False
             while i < len(class_info) - 1:
                 if class_info[i+1].text != 'Type':
@@ -161,38 +137,17 @@ def _parse_course_listing(html):
                     prereq = '_'.join(class_info[i].text.strip().split(' '))
                     cur_prerequestLst[class_num_hyphenated].append(prereq)
                     if prereq not in class_num_set_class_num_label_set:
-                        # class_num_label_set.add('{} [ label="{}\n{}" ];'.format(prereq, class_info[i].text.strip(), ''))
                         class_num_set_class_num_label_set[prereq] = '{} [ label="{}\\n{}" ];'.format(prereq, class_info[i].text.strip(), '')
-                    # class_num_label_lst.append('{} [ label="{}\n{}" ]'.format(prereq, class_info[i].text.strip(), ''))
                 else:
                     break
         if class_info[i].text == 'Room Size':
             new_class = True
-        # print(type(class_info[i].text))
-        # print(i, class_info[i].text)
         i += 1
-    # for info in class_info:
-    # class_num_label_lst = sorted(list(class_num_label_set))
     class_num_label_lst = sorted(list(class_num_set_class_num_label_set.values()))
-
-    # print('cur_prerequestLst: ', cur_prerequestLst)
-    # print('class_num_label_lst: ', class_num_label_lst)
 
     return cur_prerequestLst, class_num_label_lst
 
-    # retval["action"] = str(form["action"])
-    # retval["method"] = str(form["method"])
-
-    # for hidden in form.find_all("input", {"type":"hidden"}):
-    #     retval["courses"][str(hidden["name"])] = str(hidden["value"])
-
-    # for select in form.find_all("select"):
-    #     retval["courses"][str(select["name"])] = _parse_select(select)
-
-    # return (None, None, None) # TODO: replace with your code
-
 def _parse_class_str(class_str):
-    # print(class_str.strip().split(' - '))
     name, crn, class_num, section_campus, credits = class_str.strip().split(' - ')
     # Remove honor symbol from class name
     if ' (Hon)' in name:
@@ -271,14 +226,6 @@ def coursesearch(termcode,
 # and outputs to the console a digraph of related courses
 # in DOT format
 def print_course_dot(cur_prerequestLst, class_num_label_lst):
-    # print("TODO")
-    # print('class_num_label_lst: ', '\n'.join(class_num_label_lst))
-
-    # print('class_num_label_lst: ', class_num_label_lst)
-
-    # class_num_label_lst = '\n'.join(repr(line) for line in class_num_label_lst if line)
-    # class_num_label_str = ast.literal_eval(class_num_label_lst)
-    # print('class_num_label_str: ', class_num_label_str)
     arrowLst = []
     seen = set()
     for cur, prerequestLst in cur_prerequestLst.items():
@@ -294,13 +241,7 @@ def print_course_dot(cur_prerequestLst, class_num_label_lst):
     res += class_num_label_lst
     res += sorted(arrowLst)
     res.append('}')
-    # print([line for line in res if line])
     resStr = '\n'.join(res)
-    # resStr = '\n'.join(repr(line) for line in res if line)
-    # resStr = '\n'.join(ast.literal_eval(line) for line in res if line)
-
-    # print(type(resStr))
-    # resStr = ast.literal_eval(resStr)
     print(resStr)
 
 ##############################################################################
@@ -383,12 +324,6 @@ def main(argv):
         
     if course is None:
         course = ""
-        
-    # print('termcode: ', termcode)
-    # print('levels: ', levels)
-    # print('instructors: ', instructors)
-    # print('subjects: ', subjects)
-    # print('termcode: ', termcode)
 
     info = coursesearch(termcode,
         sel_levl=levels,
