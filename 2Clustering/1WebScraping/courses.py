@@ -126,10 +126,11 @@ def _parse_course_listing(html):
     # print(class_info[0]['class'])
     # if class_info[0]['class'] == ['ddtitle']:
     #     print('hello world!!!!!')
+
     # There is a repeated class name due to find all th and a, filter them out
-    class_info = [info for info in class_info if not (info.name == 'th' and info['class'] == ['ddtitle'])]
-    # Filter out Syllabus Available link tag
-    class_info = [info for info in class_info if not info.text == 'Syllabus Available']
+    # Filter out Syllabus Available link tag and Return to Previous link tag
+    class_info = [info for info in class_info if not ((info.name == 'th' and info['class'] == ['ddtitle']) \
+     or info.text == 'Syllabus Available' or info.text == 'Return to Previous')]
     # print('class_info: ', class_info)
     cur_prerequestLst = {}
     class_num_label_set = set()
@@ -142,7 +143,8 @@ def _parse_course_listing(html):
     new_class = True
     # for info in class_info:
     for i in range(len(class_info)):
-        if new_class and class_info[i].text != 'Return to Previous':
+        # if new_class and class_info[i].text != 'Return to Previous':
+        if new_class:
             name, crn, class_num, class_num_hyphenated, section_campus, credits = _parse_class_str(class_info[i].text)
             cur_prerequestLst[class_num_hyphenated] = []
             # class_num_set.add(class_num_hyphenated)
@@ -195,6 +197,8 @@ def _parse_class_str(class_str):
     # Remove honor symbol from class name
     if ' (Hon)' in name:
         name = name.replace(' (Hon)', '')
+    if ' (HON)' in name:
+        name = name.replace(' (HON)', '')
     class_num_hyphenated = '_'.join(class_num.split(' '))
     # print(name, crn, class_num, section_campus, credits)
     return name, crn, class_num, class_num_hyphenated, section_campus, credits
@@ -240,44 +244,18 @@ def coursesearch(termcode,
         ("end_ap", end_ap),
     ]
 
-    # print('here', sel_subj)
-    # print('here2', sel_levl)
-
-    # if sel_attr != ["%"]:
-    #     for attr in sel_attr:
-    #         params.append(("sel_attr", attr))
-    # else:
-    #     params.append(("sel_attr", attr))
     for attr in sel_attr:
         params.append(("sel_attr", attr))
 
-    # if sel_subj != ["%", "%"]:
-    #     for sub in sel_subj:
-    #         params.append(("sel_subj", sub))
-    # else:
-    #     params.append(("sel_subj", sub))
     for sub in sel_subj:
         params.append(("sel_subj", sub))
 
-    # if sel_levl != ["%"]:
-    #     for level in sel_levl:
-    #         params.append(("sel_levl", level))
-    # else:
-    #     params.append(("sel_levl", level))
     for level in sel_levl:
         params.append(("sel_levl", level))
 
-    # if sel_instr != ["%"]:
-    #     for ins in sel_instr:
-    #         params.append(("sel_instr", ins))
-    # else:
-    #     params.append(("sel_instr", ins))
     for ins in sel_instr:
         params.append(("sel_instr", ins))
 
-    # print('params: ', params)
-    
-    # TODO
     # 1. Take function parameters and add to params
     # 2. Submit form with parameters
     # 3. Call _parse_course_listing to parse, return
