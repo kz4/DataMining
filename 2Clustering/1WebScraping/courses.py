@@ -155,7 +155,6 @@ def _parse_class_str(class_str):
     if ' (HON)' in name:
         name = name.replace(' (HON)', '')
     class_num_hyphenated = '_'.join(class_num.split(' '))
-    # print(name, crn, class_num, section_campus, credits)
     return name, crn, class_num, class_num_hyphenated, section_campus, credits
 
 # execute a course search request
